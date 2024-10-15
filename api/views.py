@@ -1,11 +1,13 @@
 from django.db.models import Sum, Q, Avg, Min, Max
 from rest_framework import viewsets
 from rest_framework.views import APIView
+from rest_framework.generics import UpdateAPIView
 from rest_framework.response import Response
 from rest_framework.status import HTTP_200_OK, HTTP_400_BAD_REQUEST
 
 from rapihogar.models import Company, Technical, Pedido, User, Scheme
-from .serializers import CompanySerializer, TechnicalSerializer
+from .serializers import (CompanySerializer, TechnicalSerializer,
+                          PedidoSerializer)
 
 import random
 
@@ -100,7 +102,7 @@ class ListTechniciansAPIView(APIView):
                 'id': technician.id,
                 'full_name': technician.full_name,
                 'hours worked': total_hours,
-                'total charge': payment,
+                'total charge': f"${payment}",
                 'quantity_orders': technician.quantity_orders
             })
 
@@ -157,3 +159,11 @@ class ReportAPIView(APIView):
         }
 
         return Response(response_data, status=HTTP_200_OK)
+
+
+class UpdatePedidoAPIView(UpdateAPIView):
+    queryset = Pedido.objects.all()
+    serializer_class = PedidoSerializer
+
+    def put(self, request, *args, **kwargs):
+        return self.update(request, *args, **kwargs)
