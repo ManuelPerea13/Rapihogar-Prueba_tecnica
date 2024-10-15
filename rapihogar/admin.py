@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import User, Scheme, Company, Pedido
+from .models import User, Scheme, Company, Pedido, Technical
 
 
 @admin.register(User)
@@ -19,4 +19,9 @@ class CompanyAdmin(admin.ModelAdmin):
 
 @admin.register(Pedido)
 class PedidoAdmin(admin.ModelAdmin):
-    list_display = ('id', 'client', 'scheme', 'hours_worked')
+    list_display = ('id', 'client', 'technical', 'scheme', 'hours_worked')
+
+
+@admin.register(Technical)
+class TechnicalAdmin(admin.ModelAdmin):
+    list_display = ('id', 'full_name', 'total_charge', 'quantity_orders', 'payment')

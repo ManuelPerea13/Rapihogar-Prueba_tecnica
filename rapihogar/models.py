@@ -89,8 +89,28 @@ class Pedido(models.Model):
         on_delete=models.CASCADE
     )
     hours_worked = models.IntegerField(default=0)
+    technical = models.ForeignKey(
+        'Technical',
+        null=True,
+        on_delete=models.CASCADE
+    )
 
     class Meta:
         app_label = 'rapihogar'
         verbose_name_plural = 'pedidos'
         ordering = ('-id', )
+
+    def save(self, *args, **kwargs):
+        self.technical.quantity_orders += 1
+        self.technical.save()
+        super().save(*args, **kwargs)
+
+
+class Technical(models.Model):
+    full_name = models.CharField(max_length=100)
+    total_charge = models.FloatField(default=0)
+    quantity_orders = models.IntegerField(default=0)
+    payment = models.FloatField(default=0)
+
+    def __str__(self):
+        return self.full_name
