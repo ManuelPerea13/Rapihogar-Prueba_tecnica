@@ -24,9 +24,9 @@ services:
     volumes:
       - .:/code
     ports:
-      - "8000:8000"
+      - "8001:8001"
     expose:
-      - 8000
+      - 8001
     depends_on:
       - db
   
