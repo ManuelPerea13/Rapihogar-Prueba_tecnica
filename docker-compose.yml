@@ -7,14 +7,14 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql/data
     ports:
-      - "5432:5432"
+      - "5433:5433"
     env_file:
       - .env
 
   nginx:
     build: ./nginx
     ports:
-      - 80:80
+      - 81:81
     depends_on:
       - web
     restart: "on-failure"
@@ -24,9 +24,9 @@ services:
     volumes:
       - .:/code
     ports:
-      - "8000:8000"
+      - "8001:8001"
     expose:
-      - 8000
+      - 8001
     depends_on:
       - db
     command: ["sh", "-c", "sleep 5 && python manage.py runserver 0.0.0.0:8000"]
