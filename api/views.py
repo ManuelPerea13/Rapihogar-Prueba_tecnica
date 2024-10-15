@@ -95,6 +95,7 @@ class ListTechniciansAPIView(APIView):
         for technician in technicians:
             total_hours = Pedido.objects.filter(technical=technician).aggregate(total_hours=Sum('hours_worked'))['total_hours'] or 0
             payment = self.calculate_payment(total_hours)
+            technician.total_charge = total_hours
             technician.payment = payment
             technician.save()
 
