@@ -19,9 +19,9 @@ class CompanyAdmin(admin.ModelAdmin):
 
 @admin.register(Pedido)
 class PedidoAdmin(admin.ModelAdmin):
-    list_display = ('id', 'client', 'scheme', 'hours_worked')
+    list_display = ('id', 'client', 'technical', 'scheme', 'hours_worked')
 
 
 @admin.register(Technical)
 class TechnicalAdmin(admin.ModelAdmin):
-    list_display = ('id', 'full_name', 'hours_worked', 'total_charge', 'quantity_ordered')
+    list_display = ('id', 'full_name', 'total_charge', 'quantity_ordered')

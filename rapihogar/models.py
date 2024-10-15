@@ -89,16 +89,23 @@ class Pedido(models.Model):
         on_delete=models.CASCADE
     )
     hours_worked = models.IntegerField(default=0)
+    technical = models.ForeignKey(
+        'Technical',
+        null=True,
+        on_delete=models.CASCADE
+    )
 
     class Meta:
         app_label = 'rapihogar'
         verbose_name_plural = 'pedidos'
         ordering = ('-id', )
 
+    def get_technical_quantity_order(self):
+        return self.technical.quantity_ordered
+
 
 class Technical(models.Model):
     full_name = models.CharField(max_length=100)
-    hours_worked = models.IntegerField(default=0)
     total_charge = models.FloatField(default=0)
     quantity_ordered = models.IntegerField(default=0)
 
