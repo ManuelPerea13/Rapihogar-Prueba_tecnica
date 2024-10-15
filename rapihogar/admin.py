@@ -24,4 +24,4 @@ class PedidoAdmin(admin.ModelAdmin):
 
 @admin.register(Technical)
 class TechnicalAdmin(admin.ModelAdmin):
-    list_display = ('id', 'full_name', 'total_charge', 'quantity_ordered')
+    list_display = ('id', 'full_name', 'total_charge', 'quantity_orders', 'payment')

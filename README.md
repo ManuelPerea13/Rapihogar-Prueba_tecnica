@@ -64,7 +64,7 @@ Realizar un Comando que genere N pedidos  (N, será el número de pedidos a carg
 * N solo puede contener valores entre 1 (inclusive) y 100 (inclusive)
 * Seleccionar un Técnico aleatoriamente
 * Seleccionar un Cliente  aleatoriamente
-* Asigne horas trabajadas entre 1 y 10
+* Asigne horas trabajadas entre 1 y 50
 
 ### 5. Endpoint listado de técnicos ###
 Luego de cargar todos los datos crear un servicio web que liste todos los técnicos y calcule el pago según las horas trabajadas 
