@@ -94,3 +94,13 @@ class Pedido(models.Model):
         app_label = 'rapihogar'
         verbose_name_plural = 'pedidos'
         ordering = ('-id', )
+
+
+class Technical(models.Model):
+    full_name = models.CharField(max_length=100)
+    hours_worked = models.IntegerField(default=0)
+    total_charge = models.FloatField(default=0)
+    quantity_ordered = models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.full_name
